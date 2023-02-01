@@ -1,0 +1,20 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<BlazorDaisyUI.Component1 />
+
+@code{
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        throw new Exception("Random exception to see whether the error ui will show");
+    }
+
+}

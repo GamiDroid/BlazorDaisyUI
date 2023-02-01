@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "buildcss:Debug": "npx tailwindcss -i ./wwwroot/styles.i.css -o ./wwwroot/styles.css",
+    "buildcss:Release": "npx tailwindcss -i ./wwwroot/styles.i.css -o ./wwwroot/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
