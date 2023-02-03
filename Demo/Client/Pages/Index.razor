@@ -9,12 +9,14 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?" />
 
 <BlazorDaisyUI.Component1 />
+<BlazorDaisyUI.Button />
+<BlazorDaisyUI.Input T=int Type="number" />
+<BlazorDaisyUI.Input T="string" Value="@("Hello World!")" />
+
+<BlazorDaisyUI.Select Options="@(new HashSet<string> { "Kevin", "Myrthe", "Bram" })" Value="@("Bram")" />
+<BlazorDaisyUI.MultiSelect Options="@(new HashSet<string> { "Kevin", "Myrthe", "Bram" })" Values="@(new[] { "Bram", "Kevin", "Myrthe", "Bram", "Bram", "Kevin", "Myrthe", "Bram" , "Bram", "Kevin", "Myrthe", "Bram"  })" />
 
 @code{
 
-    protected override void OnAfterRender(bool firstRender)
-    {
-        throw new Exception("Random exception to see whether the error ui will show");
-    }
 
 }

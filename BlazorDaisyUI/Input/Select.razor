@@ -1,0 +1,28 @@
+﻿@namespace BlazorDaisyUI
+@typeparam T
+
+<select class="dsy-select dsy-select-bordered" @bind="@Value" @onclick="() => Console.WriteLine(Value)">
+    @if (Options is not null)
+    {
+        @foreach (var option in Options)
+        {
+            <option value="@option">@option</option>
+        }
+    }
+</select>
+
+@code {
+
+    [Parameter] public HashSet<T>? Options { get; set; }
+
+    [Parameter] public T? Value { get; set; }
+
+    private Task HandleValueChanged(ChangeEventArgs args)
+    {
+        Console.WriteLine($"selected value: '{args.Value}'");
+
+
+
+        return Task.CompletedTask;
+    }
+}
