@@ -1,0 +1,10 @@
+﻿@namespace BlazorDaisyUI
+
+<input type="checkbox" class="dsy-checkbox" @bind="Value" />
+
+@code {
+
+    [Parameter] public bool Value { get; set; }
+    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
+
+}
