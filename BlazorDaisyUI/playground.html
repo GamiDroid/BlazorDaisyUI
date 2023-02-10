@@ -7,56 +7,118 @@
     <link href="./wwwroot/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="m-4">
-        <div class="dsy-input dsy-input-bordered dsy-dropdown h-auto p-2" aria-haspopup="true" style="background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 20px) calc(1px + 50%), calc(100% - 16px) calc(1px + 50%); background-size: 4px 4px, 4px 4px; background-repeat: no-repeat;">
-            <div class="flex">
-                <div class="flex-1 max-w-[250px]">
-                    <div class="dsy-badge dsy-badge-ghost gap-2">
-                        GGGG
+    <div class="flex gap-4 m-4">
+        <input type="text" placeholder="Type here" class="dsy-input dsy-input-bordered w-full max-w-xs" />
+
+        <div class="dsy-dropdown h-auto w-full max-w-lg">
+            <div tabindex="0" class="dsy-select dsy-select-bordered dsy-dropdown pt-3.5 pb-3 h-auto w-full">
+                <div class="flex flex-wrap w-full gap-1">
+                    <div class="dsy-badge gap-2">
+                        Kevin
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
-                    <div class="dsy-badge dsy-badge-ghost gap-2">
-                        GGGG
+                    <div class="dsy-badge gap-2 max-w-full">
+                        <div class="h-full w-full truncate">Myrthe long long long long long long long long</div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
-                    <div class="dsy-badge dsy-badge-ghost gap-2">
-                        GGGG
+                    <div class="dsy-badge gap-2">
+                        Bram
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
-                    <div class="dsy-badge dsy-badge-ghost gap-2">
-                        GGGG
+                    <div class="dsy-badge gap-2">
+                        Ingrid
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
-                    <div class="dsy-badge dsy-badge-ghost gap-2">
-                        GGGG
+                    <div class="dsy-badge gap-2">
+                        Dim
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
-                    <div class="dsy-badge dsy-badge-ghost gap-2">
-                        GGGG
+                    <div class="dsy-badge gap-2">
+                        Sharon
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </div>
+                    <div class="dsy-badge gap-2">
+                        Another name
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
                 </div>
             </div>
-            <ul tabindex="0" class="dsy-menu dsy-dropdown-content p-2 shadow bg-base-100 rounded-box w-full" aria-label="submenu">
-                <li>
-                    <label class="dsy-label cursor-pointer">
-                        <span class="dsy-label-text">Remember me</span>
-                        <input type="checkbox" checked="checked" class="dsy-checkbox" />
-                    </label>
-                </li>
-                <li>
-                    <label class="dsy-label cursor-pointer">
-                        <span class="dsy-label-text">Remember me</span>
-                        <input type="checkbox" checked="checked" class="dsy-checkbox" />
-                    </label>
-                </li>
-                <li>
-                    <label class="dsy-label cursor-pointer">
-                        <span class="dsy-label-text">Remember me</span>
-                        <input type="checkbox" checked="checked" class="dsy-checkbox" />
-                    </label>
-                </li>
-            </ul>
+            <div tabindex="0" class="dsy-dropdown-content dsy-menu p-2 shadow bg-base-100 border w-full">
+                <ul class="max-h-[300px] overflow-auto">
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Kevin</span>
+                            <input type="checkbox" class="dsy-checkbox" checked />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Myrthe</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Bram</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Kevin</span>
+                            <input type="checkbox" class="dsy-checkbox" checked />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Myrthe</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Bram</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Kevin</span>
+                            <input type="checkbox" class="dsy-checkbox" checked />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Myrthe</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Bram</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Kevin</span>
+                            <input type="checkbox" class="dsy-checkbox" checked />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Myrthe</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                    <li>
+                        <label class="dsy-label cursor-pointer">
+                            <span class="dsy-label-text">Bram</span>
+                            <input type="checkbox" class="dsy-checkbox" />
+                        </label>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
