@@ -14,9 +14,14 @@ Welcome to your new app.
 <BlazorDaisyUI.Input T="string" Value="@("Hello World!")" />
 
 <BlazorDaisyUI.Select Options="@(new HashSet<string> { "Kevin", "Myrthe", "Bram" })" Value="@("Bram")" />
-<BlazorDaisyUI.MultiSelect Options="@(new HashSet<string> { "Kevin", "Myrthe", "Bram" })" Values="@(new[] { "Bram", "Kevin", "Myrthe", "Bram", "Bram", "Kevin", "Myrthe", "Bram" , "Bram", "Kevin", "Myrthe", "Bram"  })" />
+<BlazorDaisyUI.MultiSelect Options="options" SelectedValues="new List<int> { 1 }" />
+<BlazorDaisyUI.Checkbox />
 
 @code{
-
+    
+    ICollection<int> options = new List<int>
+    {
+        1, 2, 3, 4, 5
+    };
 
 }

@@ -1,7 +1,7 @@
 ﻿@namespace BlazorDaisyUI
 @typeparam T
 
-<select class="dsy-select dsy-select-bordered" @bind="@Value" @onclick="() => Console.WriteLine(Value)">
+<select class="select select-bordered" @bind="@Value" @onclick="() => Console.WriteLine(Value)">
     @if (Options is not null)
     {
         @foreach (var option in Options)
