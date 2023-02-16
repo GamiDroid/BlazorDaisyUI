@@ -1,0 +1,18 @@
+﻿
+<input type="search" class="input input-bordered" placeholder="search..." @bind="SearchText" @bind:event="oninput" @onkeypress=HandleEnter />
+
+@code {
+
+    [Parameter] public string? SearchText { get; set; }
+
+    [Parameter] public EventCallback<string> OnSearch { get; set; }
+
+    private async Task HandleEnter(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            await OnSearch.InvokeAsync(SearchText);
+        }
+    }
+
+}

@@ -17,6 +17,8 @@ Welcome to your new app.
 <BlazorDaisyUI.MultiSelect Options="options" SelectedValues="new List<int> { 1 }" />
 <BlazorDaisyUI.Checkbox />
 
+<BlazorDaisyUI.Input.SearchInput OnSearch="@((s) => Console.WriteLine("search: " + s))" />
+
 @code{
     
     ICollection<int> options = new List<int>
