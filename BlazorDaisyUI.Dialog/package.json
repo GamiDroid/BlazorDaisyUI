@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "buildcss:Debug": "npx tailwindcss -i ./wwwroot/styles.i.css -o ./wwwroot/styles.css",
+    "buildcss:Watch": "npx tailwindcss -i ./wwwroot/styles.i.css -o ./wwwroot/styles.css --watch",
+    "buildcss:Release": "npx tailwindcss -i ./wwwroot/styles.i.css -o ./wwwroot/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  },
+  "dependencies": {
+    "daisyui": "^2.50.0"
+  }
+}

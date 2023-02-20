@@ -1,0 +1,15 @@
+﻿@namespace BlazorDaisyUI.Dialog
+@*this makes dialog inlineable, it will only render inside a DialogInstance*@
+@if (!IsInline)
+{
+    <div @attributes="UserAttributes" class="@ContentClass" style="@ContentStyle">
+        @DialogContent
+    </div>
+
+    @if (DialogActions != null)
+    {
+        <div class="@ActionClass">
+            @DialogActions
+        </div>
+    }
+}

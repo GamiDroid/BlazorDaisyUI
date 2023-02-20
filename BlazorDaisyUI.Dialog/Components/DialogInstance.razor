@@ -1,0 +1,28 @@
+﻿@namespace BlazorDaisyUI.Dialog
+@inherits ComponentBase
+
+<div @attributes="UserAttributes" id="@_elementId" class="mud-dialog-container @Position">
+    <MudOverlay Visible="true" OnClick="HandleBackgroundClick" Class="mud-overlay-dialog" DarkBackground="true" />
+    <div id="_@Id.ToString("N")" role="dialog" class="@Classname" style="@Style">
+        @if (!NoHeader)
+        {
+            <div class="mud-dialog-title">
+                @if (TitleContent == null)
+                {
+                    <div>@Title</div>
+                }
+                else
+                {
+                    @TitleContent
+                }
+                @if (CloseButton)
+                {
+                    <button aria-label="close" @onclick="Cancel" class="btn">X</button>
+                }
+            </div>
+         }
+        <CascadingValue Value="this" IsFixed="true">
+            @Content
+        </CascadingValue>
+    </div>
+</div>

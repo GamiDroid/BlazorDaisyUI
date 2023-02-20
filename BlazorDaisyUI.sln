@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Shared", "Demo\Shared\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDaisyUI", "BlazorDaisyUI\BlazorDaisyUI.csproj", "{94081F66-529D-4213-9390-DCCDA12DBEC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDaisyUI.Dialog", "BlazorDaisyUI.Dialog\BlazorDaisyUI.Dialog.csproj", "{A4168D4B-46D5-4FBF-AD9F-F5684751F105}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{94081F66-529D-4213-9390-DCCDA12DBEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94081F66-529D-4213-9390-DCCDA12DBEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94081F66-529D-4213-9390-DCCDA12DBEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
