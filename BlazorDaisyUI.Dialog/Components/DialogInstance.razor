@@ -1,8 +1,7 @@
 ﻿@namespace BlazorDaisyUI.Dialog
 @inherits ComponentBase
 
-<div @attributes="UserAttributes" id="@_elementId" class="mud-dialog-container @Position">
-    <MudOverlay Visible="true" OnClick="HandleBackgroundClick" Class="mud-overlay-dialog" DarkBackground="true" />
+<div @attributes="UserAttributes" id="@_elementId" class="modal modal-open @Position">
     <div id="_@Id.ToString("N")" role="dialog" class="@Classname" style="@Style">
         @if (!NoHeader)
         {
@@ -17,7 +16,7 @@
                 }
                 @if (CloseButton)
                 {
-                    <button aria-label="close" @onclick="Cancel" class="btn">X</button>
+                    <button aria-label="close" @onclick="Cancel" class="btn btn-sm btn-circle absolute right-2 top-2">@CloseIcon</button>
                 }
             </div>
          }

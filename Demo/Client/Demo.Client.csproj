@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BlazorDaisyUI.Dialog\BlazorDaisyUI.Dialog.csproj" />
     <ProjectReference Include="..\..\BlazorDaisyUI\BlazorDaisyUI.csproj" />
     <ProjectReference Include="..\Shared\Demo.Shared.csproj" />
   </ItemGroup>

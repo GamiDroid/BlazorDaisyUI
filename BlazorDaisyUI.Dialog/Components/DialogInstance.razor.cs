@@ -63,7 +63,7 @@ public partial class DialogInstance : ComponentBase, IDisposable
     /// Custom close icon.
     /// </summary>
     [Parameter]
-    public string CloseIcon { get; set; } = "X";
+    public string CloseIcon { get; set; } = "✕";
 
     private string? Position { get; set; }
     private string? DialogMaxWidth { get; set; }
@@ -99,7 +99,7 @@ public partial class DialogInstance : ComponentBase, IDisposable
     /// </summary>
     public void Close()
     {
-        Close(DialogResult.Ok<object>(null));
+        Close(DialogResult.Ok<object?>(null));
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public partial class DialogInstance : ComponentBase, IDisposable
     /// </summary>
     public void Close(DialogResult dialogResult)
     {
-        Parent.DismissInstance(Id, dialogResult);
+        Parent?.DismissInstance(Id, dialogResult);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public partial class DialogInstance : ComponentBase, IDisposable
     public void Close<T>(T returnValue)
     {
         var dialogResult = DialogResult.Ok<T>(returnValue);
-        Parent.DismissInstance(Id, dialogResult);
+        Parent?.DismissInstance(Id, dialogResult);
     }
 
     /// <summary>
@@ -141,7 +141,6 @@ public partial class DialogInstance : ComponentBase, IDisposable
         CloseButton = SetCloseButton();
         FullWidth = SetFullWidth();
         FullScreen = SetFulScreen();
-        DisableBackdropClick = SetDisableBackdropClick();
         Class = Classname;
     }
 
@@ -206,13 +205,13 @@ public partial class DialogInstance : ComponentBase, IDisposable
     }
 
     protected string Classname =>
-        new CssBuilder("mud-dialog")
+        new CssBuilder("modal-box relative")
             .AddClass(DialogMaxWidth, !FullScreen)
             .AddClass("mud-dialog-width-full", FullWidth && !FullScreen)
             .AddClass("mud-dialog-fullscreen", FullScreen)
             .AddClass("mud-dialog-rtl", RightToLeft)
             .AddClass(_dialog?.Class)
-        .Build();
+            .Build();
 
     private bool SetHideHeader()
     {
@@ -236,44 +235,7 @@ public partial class DialogInstance : ComponentBase, IDisposable
         return false;
     }
 
-    private bool SetDisableBackdropClick()
-    {
-        if (Options.DisableBackdropClick.HasValue)
-            return Options.DisableBackdropClick.Value;
-
-        if (GlobalDialogOptions.DisableBackdropClick.HasValue)
-            return GlobalDialogOptions.DisableBackdropClick.Value;
-
-        return false;
-    }
-
-    private bool SetCloseOnEscapeKey()
-    {
-        if (Options.CloseOnEscapeKey.HasValue)
-            return Options.CloseOnEscapeKey.Value;
-
-        if (GlobalDialogOptions.CloseOnEscapeKey.HasValue)
-            return GlobalDialogOptions.CloseOnEscapeKey.Value;
-
-        return false;
-    }
-
-    private void HandleBackgroundClick()
-    {
-        if (DisableBackdropClick)
-            return;
-
-        if (_dialog?.OnBackdropClick == null)
-        {
-            Cancel();
-            return;
-        }
-
-        _dialog?.OnBackdropClick.Invoke();
-    }
-
-    private Dialog _dialog;
-    private bool _disposedValue;
+    private Dialog? _dialog;
 
     public void Register(Dialog dialog)
     {

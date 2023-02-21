@@ -30,8 +30,6 @@ public partial class DialogProvider : ComponentBase, IDisposable
         if (NavigationManager is not null)
             NavigationManager.LocationChanged += LocationChanged;
 
-        _globalDialogOptions.DisableBackdropClick = DisableBackdropClick;
-        _globalDialogOptions.CloseOnEscapeKey = CloseOnEscapeKey;
         _globalDialogOptions.CloseButton = CloseButton;
         _globalDialogOptions.NoHeader = NoHeader;
         _globalDialogOptions.Position = Position;
