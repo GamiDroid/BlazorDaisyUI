@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace BlazorDaisyUI.Dialog;
 public class DialogReference : IDialogReference
 {
-    private readonly TaskCompletionSource<DialogResult> _resultCompletion = new();
+    private readonly TaskCompletionSource<DialogResult?> _resultCompletion = new();
 
     private readonly IDialogService _dialogService;
 
@@ -20,12 +20,12 @@ public class DialogReference : IDialogReference
         _dialogService.Close(this);
     }
 
-    public void Close(DialogResult result)
+    public void Close(DialogResult? result)
     {
         _dialogService.Close(this, result);
     }
 
-    public virtual bool Dismiss(DialogResult result)
+    public virtual bool Dismiss(DialogResult? result)
     {
         return _resultCompletion.TrySetResult(result);
     }
@@ -35,7 +35,7 @@ public class DialogReference : IDialogReference
     public object? Dialog { get; private set; }
     public RenderFragment? RenderFragment { get; set; }
 
-    public Task<DialogResult> Result => _resultCompletion.Task;
+    public Task<DialogResult?> Result => _resultCompletion.Task;
 
     TaskCompletionSource<bool> IDialogReference.RenderCompleteTaskCompletionSource { get; } = new();
 
@@ -52,9 +52,13 @@ public class DialogReference : IDialogReference
     public async Task<T?> GetReturnValueAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>()
     {
         var result = await Result;
+
+        if (result is null)
+            return default;
+
         try
         {
-            return (T)result.Data;
+            return (T?)result.Data;
         }
         catch (InvalidCastException)
         {

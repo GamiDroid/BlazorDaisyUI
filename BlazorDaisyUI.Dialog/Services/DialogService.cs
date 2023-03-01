@@ -36,29 +36,29 @@ public class DialogService : IDialogService
     }
 
     public event Action<IDialogReference>? OnDialogInstanceAdded;
-    public event Action<IDialogReference, DialogResult>? OnDialogCloseRequested;
+    public event Action<IDialogReference, DialogResult?>? OnDialogCloseRequested;
 
     public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>() where T : ComponentBase
     {
         return Show<T>(string.Empty, new DialogParameters(), new DialogOptions());
     }
 
-    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title) where T : ComponentBase
+    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title) where T : ComponentBase
     {
         return Show<T>(title, new DialogParameters(), new DialogOptions());
     }
 
-    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title, DialogOptions options) where T : ComponentBase
+    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title, DialogOptions options) where T : ComponentBase
     {
         return Show<T>(title, new DialogParameters(), options);
     }
 
-    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title, DialogParameters parameters) where T : ComponentBase
+    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title, DialogParameters parameters) where T : ComponentBase
     {
         return Show<T>(title, parameters, new DialogOptions());
     }
 
-    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title, DialogParameters parameters, DialogOptions options) where T : ComponentBase
+    public IDialogReference Show<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title, DialogParameters parameters, DialogOptions options) where T : ComponentBase
     {
         return Show(typeof(T), title, parameters, options);
     }
@@ -68,22 +68,22 @@ public class DialogService : IDialogService
         return Show(contentComponent, string.Empty, new DialogParameters(), new DialogOptions());
     }
 
-    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title)
+    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title)
     {
         return Show(contentComponent, title, new DialogParameters(), new DialogOptions());
     }
 
-    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title, DialogOptions options)
+    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title, DialogOptions options)
     {
         return Show(contentComponent, title, new DialogParameters(), options);
     }
 
-    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title, DialogParameters parameters)
+    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title, DialogParameters parameters)
     {
         return Show(contentComponent, title, parameters, new DialogOptions());
     }
 
-    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title, DialogParameters parameters, DialogOptions options)
+    public IDialogReference Show([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title, DialogParameters parameters, DialogOptions options)
     {
         if (!typeof(ComponentBase).IsAssignableFrom(contentComponent))
         {
@@ -123,22 +123,22 @@ public class DialogService : IDialogService
         return ShowAsync<T>(string.Empty, new DialogParameters(), new DialogOptions());
     }
 
-    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title) where T : ComponentBase
+    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title) where T : ComponentBase
     {
         return ShowAsync<T>(title, new DialogParameters(), new DialogOptions());
     }
 
-    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title, DialogOptions options) where T : ComponentBase
+    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title, DialogOptions options) where T : ComponentBase
     {
         return ShowAsync<T>(title, new DialogParameters(), options);
     }
 
-    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title, DialogParameters parameters) where T : ComponentBase
+    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title, DialogParameters parameters) where T : ComponentBase
     {
         return ShowAsync<T>(title, parameters, new DialogOptions());
     }
 
-    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string title, DialogParameters parameters, DialogOptions options) where T : ComponentBase
+    public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>(string? title, DialogParameters parameters, DialogOptions options) where T : ComponentBase
     {
         return ShowAsync(typeof(T), title, parameters, options);
     }
@@ -148,22 +148,22 @@ public class DialogService : IDialogService
         return ShowAsync(contentComponent, string.Empty, new DialogParameters(), new DialogOptions());
     }
 
-    public Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title)
+    public Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title)
     {
         return ShowAsync(contentComponent, title, new DialogParameters(), new DialogOptions());
     }
 
-    public Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title, DialogOptions options)
+    public Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title, DialogOptions options)
     {
         return ShowAsync(contentComponent, title, new DialogParameters(), options);
     }
 
-    public Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title, DialogParameters parameters)
+    public Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title, DialogParameters parameters)
     {
         return ShowAsync(contentComponent, title, parameters, new DialogOptions());
     }
 
-    public async Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string title, DialogParameters parameters, DialogOptions options)
+    public async Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type contentComponent, string? title, DialogParameters parameters, DialogOptions options)
     {
         var dialogReference = Show(contentComponent, title, parameters, options);
 
@@ -178,7 +178,7 @@ public class DialogService : IDialogService
         }
     }
 
-    //public Task<bool?> ShowMessageBox(string title, string message, string yesText = "OK",
+    //public Task<bool?> ShowMessageBox(string? title, string message, string yesText = "OK",
     //    string noText = null, string cancelText = null, DialogOptions options = null)
     //{
     //    return this.ShowMessageBox(new MessageBoxOptions
@@ -191,7 +191,7 @@ public class DialogService : IDialogService
     //    }, options);
     //}
 
-    //public Task<bool?> ShowMessageBox(string title, MarkupString markupMessage, string yesText = "OK",
+    //public Task<bool?> ShowMessageBox(string? title, MarkupString markupMessage, string yesText = "OK",
     //    string noText = null, string cancelText = null, DialogOptions options = null)
     //{
     //    return this.ShowMessageBox(new MessageBoxOptions
@@ -227,7 +227,7 @@ public class DialogService : IDialogService
         Close(dialog, DialogResult.Ok<object?>(null));
     }
 
-    public virtual void Close(DialogReference dialog, DialogResult result)
+    public virtual void Close(DialogReference dialog, DialogResult? result)
     {
         OnDialogCloseRequested?.Invoke(dialog, result);
     }

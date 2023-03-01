@@ -3,12 +3,11 @@
 namespace BlazorDaisyUI.Dialog;
 public partial class Dialog : ComponentBase
 {
-    protected string ContentClass => new CssBuilder("mud-dialog-content")
-          .AddClass($"mud-dialog-no-side-padding", DisableSidePadding)
+    protected string ContentClass => new CssBuilder()
           .AddClass(ClassContent)
         .Build();
 
-    protected string ActionClass => new CssBuilder("mud-dialog-actions")
+    protected string ActionClass => new CssBuilder("flex justify-end gap-1 p-2")
       .AddClass(ClassActions)
     .Build();
 
@@ -39,35 +38,32 @@ public partial class Dialog : ComponentBase
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> UserAttributes { get; set; } = new Dictionary<string, object>();
 
-    [Inject] public IDialogService DialogService { get; set; }
+    [Inject] public IDialogService? DialogService { get; set; }
 
     /// <summary>
     /// Define the dialog title as a renderfragment (overrides Title)
     /// </summary>
     [Parameter]
-    public RenderFragment TitleContent { get; set; }
+    public RenderFragment? TitleContent { get; set; }
 
     /// <summary>
     /// Define the dialog body here
     /// </summary>
     [Parameter]
-    public RenderFragment DialogContent { get; set; }
+    public RenderFragment? DialogContent { get; set; }
 
     /// <summary>
     /// Define the action buttons here
     /// </summary>
     [Parameter]
-    public RenderFragment DialogActions { get; set; }
+    public RenderFragment? DialogActions { get; set; }
 
     /// <summary>
     /// Default options to pass to Show(), if none are explicitly provided.
     /// Typically useful on inline dialogs.
     /// </summary>
     [Parameter]
-    public DialogOptions Options { get; set; }
-
-    [Parameter]
-    public Action OnBackdropClick { get; set; }
+    public DialogOptions? Options { get; set; }
 
     /// <summary>
     /// No padding at the sides
@@ -79,19 +75,19 @@ public partial class Dialog : ComponentBase
     /// CSS class that will be applied to the dialog content
     /// </summary>
     [Parameter]
-    public string ClassContent { get; set; }
+    public string? ClassContent { get; set; }
 
     /// <summary>
     /// CSS class that will be applied to the action buttons container
     /// </summary>
     [Parameter]
-    public string ClassActions { get; set; }
+    public string? ClassActions { get; set; }
 
     /// <summary>
     /// CSS styles to be applied to the dialog content
     /// </summary>
     [Parameter]
-    public string ContentStyle { get; set; }
+    public string? ContentStyle { get; set; }
 
     /// <summary>
     /// Bind this two-way to show and close an inlined dialog. Has no effect on opened dialogs
@@ -129,6 +125,8 @@ public partial class Dialog : ComponentBase
     {
         if (!IsInline)
             throw new InvalidOperationException("You can only show an inlined dialog.");
+        if (DialogService is null)
+            throw new InvalidOperationException("Instance of DialogService cannot be found.");
         if (_reference != null)
             Close();
         var parameters = new DialogParameters()
@@ -144,7 +142,8 @@ public partial class Dialog : ComponentBase
             [nameof(ClassActions)] = ClassActions,
             [nameof(ContentStyle)] = ContentStyle,
         };
-        _reference = DialogService.Show<Dialog>(title, parameters, options ?? Options);
+
+        _reference = DialogService.Show<Dialog>(title, parameters, options ??= Options = new());
         _reference.Result.ContinueWith(t =>
         {
             _isVisible = false;
@@ -184,7 +183,7 @@ public partial class Dialog : ComponentBase
     /// Close the currently open inlined dialog
     /// </summary>
     /// <param name="result"></param>
-    public void Close(DialogResult result = null)
+    public void Close(DialogResult? result = null)
     {
         if (!IsInline || _reference == null)
             return;

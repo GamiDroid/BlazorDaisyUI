@@ -14,6 +14,7 @@
         var options = new BlazorDaisyUI.Dialog.DialogOptions
         {
             CloseButton = true,
+            Position = BlazorDaisyUI.Dialog.DialogPosition.TopLeft,
         };
 
         var dialogRef = await DialogService.ShowAsync<Demo.Client.Dialogs.DemoDialog>("Some cool title", options);

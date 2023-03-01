@@ -8,13 +8,13 @@ public interface IDialogReference
 
     RenderFragment? RenderFragment { get; set; }
 
-    Task<DialogResult> Result { get; }
+    Task<DialogResult?> Result { get; }
 
     TaskCompletionSource<bool> RenderCompleteTaskCompletionSource { get; }
 
     void Close();
 
-    void Close(DialogResult result);
+    void Close(DialogResult? result);
 
     bool Dismiss(DialogResult result);
 

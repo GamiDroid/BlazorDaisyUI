@@ -7,6 +7,8 @@ public class DialogOptions
 
     public MaxWidth? MaxWidth { get; set; }
 
+    public DialogHeaderColor? HeaderColor { get; set; }
+
     public bool? NoHeader { get; set; }
     public bool? CloseButton { get; set; }
     public bool? FullScreen { get; set; }
@@ -15,30 +17,49 @@ public class DialogOptions
 
 public enum MaxWidth
 {
-    [Description("small")]
+    [Description("")]
+    None,
+    [Description("max-w-xl")]
     Small,
+    [Description("max-w-5xl")]
+    Medium,
+    [Description("max-w-6xl")]
+    Large,
 }
 
 public enum DialogPosition
 {
-    [Description("center")]
+    [Description("justify-center content-center")]
     Center,
-    [Description("centerleft")]
+    [Description("justify-start content-center")]
     CenterLeft,
-    [Description("centerright")]
+    [Description("justify-end content-center")]
     CenterRight,
-    [Description("topcenter")]
+    [Description("justify-center content-start")]
     TopCenter,
-    [Description("topleft")]
+    [Description("justify-start content-start")]
     TopLeft,
-    [Description("topright")]
+    [Description("justify-end content-start")]
     TopRight,
-    [Description("bottomcenter")]
+    [Description("justify-center content-end")]
     BottomCenter,
-    [Description("bottomleft")]
+    [Description("justify-start content-end")]
     BottomLeft,
-    [Description("bottomright")]
+    [Description("justify-end content-end")]
     BottomRight,
-    [Description("custom")]
-    Custom
+}
+
+public enum DialogHeaderColor
+{
+    Primary,
+    Secondary,
+    Accent,
+    Neutral,
+    Base100,
+    Base200,
+    Base300,
+    Info,
+    Success,
+    Warning,
+    Error
 }

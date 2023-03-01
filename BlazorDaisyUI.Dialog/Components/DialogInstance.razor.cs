@@ -6,7 +6,6 @@ public partial class DialogInstance : ComponentBase, IDisposable
     private DialogOptions _options = new();
     private readonly string _elementId = "dialog_" + Guid.NewGuid().ToString()[..8];
 
-    [CascadingParameter(Name = "RightToLeft")] public bool RightToLeft { get; set; }
     [CascadingParameter] private DialogProvider? Parent { get; set; }
     [CascadingParameter] private DialogOptions GlobalDialogOptions { get; set; } = new DialogOptions();
 
@@ -67,7 +66,8 @@ public partial class DialogInstance : ComponentBase, IDisposable
 
     private string? Position { get; set; }
     private string? DialogMaxWidth { get; set; }
-    private bool DisableBackdropClick { get; set; }
+    private string? HeaderBackgroundColor { get; set; }
+    private string? HeaderColorContent { get; set; }
     private bool NoHeader { get; set; }
     private bool CloseButton { get; set; }
     private bool FullScreen { get; set; }
@@ -137,6 +137,8 @@ public partial class DialogInstance : ComponentBase, IDisposable
     {
         Position = SetPosition();
         DialogMaxWidth = SetMaxWidth();
+        HeaderBackgroundColor = SetHeaderColor();
+        HeaderColorContent = SetHeaderColorContent();
         NoHeader = SetHideHeader();
         CloseButton = SetCloseButton();
         FullWidth = SetFullWidth();
@@ -160,7 +162,7 @@ public partial class DialogInstance : ComponentBase, IDisposable
         {
             position = DialogPosition.Center;
         }
-        return $"mud-dialog-{position.ToDescriptionString()}";
+        return $"{position.ToDescriptionString()}";
     }
 
     private string SetMaxWidth()
@@ -179,7 +181,73 @@ public partial class DialogInstance : ComponentBase, IDisposable
         {
             maxWidth = MaxWidth.Small;
         }
-        return $"mud-dialog-width-{maxWidth.ToDescriptionString()}";
+        return $"{maxWidth.ToDescriptionString()}";
+    }
+
+    private string SetHeaderColor()
+    {
+        DialogHeaderColor headerColor;
+
+        if (Options.HeaderColor.HasValue)
+        {
+            headerColor = Options.HeaderColor.Value;
+        }
+        else if (GlobalDialogOptions.HeaderColor.HasValue)
+        {
+            headerColor = GlobalDialogOptions.HeaderColor.Value;
+        }
+        else
+        {
+            headerColor = DialogHeaderColor.Primary;
+        }
+
+        return headerColor switch
+        {
+            DialogHeaderColor.Primary => "bg-primary",
+            DialogHeaderColor.Secondary => "bg-secondary",
+            DialogHeaderColor.Accent => "bg-accent",
+            DialogHeaderColor.Base100 => "bg-base-100",
+            DialogHeaderColor.Base200 => "bg-base-200",
+            DialogHeaderColor.Base300 => "bg-base-300",
+            DialogHeaderColor.Info => "bg-info",
+            DialogHeaderColor.Success => "bg-success",
+            DialogHeaderColor.Warning => "bg-warning",
+            DialogHeaderColor.Error => "bg-error",
+            _ => ""
+        };
+    }
+
+    private string SetHeaderColorContent()
+    {
+        DialogHeaderColor headerColor;
+
+        if (Options.HeaderColor.HasValue)
+        {
+            headerColor = Options.HeaderColor.Value;
+        }
+        else if (GlobalDialogOptions.HeaderColor.HasValue)
+        {
+            headerColor = GlobalDialogOptions.HeaderColor.Value;
+        }
+        else
+        {
+            headerColor = DialogHeaderColor.Primary;
+        }
+
+        return headerColor switch
+        {
+            DialogHeaderColor.Primary => "text-primary-content",
+            DialogHeaderColor.Secondary => "text-secondary-content",
+            DialogHeaderColor.Accent => "text-accent-content",
+            DialogHeaderColor.Base100 => "text-base-content",
+            DialogHeaderColor.Base200 => "text-base-content",
+            DialogHeaderColor.Base300 => "text-base-content",
+            DialogHeaderColor.Info => "text-info-content",
+            DialogHeaderColor.Success => "text-success-content",
+            DialogHeaderColor.Warning => "text-warning-content",
+            DialogHeaderColor.Error => "text-error-content",
+            _ => ""
+        };
     }
 
     private bool SetFullWidth()
@@ -205,11 +273,10 @@ public partial class DialogInstance : ComponentBase, IDisposable
     }
 
     protected string Classname =>
-        new CssBuilder("modal-box relative")
+        new CssBuilder("modal-box p-0 overflow-hidden")
             .AddClass(DialogMaxWidth, !FullScreen)
-            .AddClass("mud-dialog-width-full", FullWidth && !FullScreen)
-            .AddClass("mud-dialog-fullscreen", FullScreen)
-            .AddClass("mud-dialog-rtl", RightToLeft)
+            .AddClass("w-10/12", FullWidth && !FullScreen)
+            .AddClass("max-w-full w-screen h-screen max-h-screen rounded-none", FullScreen)
             .AddClass(_dialog?.Class)
             .Build();
 
