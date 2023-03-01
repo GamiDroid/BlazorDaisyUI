@@ -1,0 +1,16 @@
+﻿
+<BlazorDaisyUI.Dialog.Dialog>
+    <DialogContent>
+        <div>This is a dialog.</div>
+    </DialogContent>
+    <DialogActions>
+        <button class="btn">Close</button>
+        <button class="btn btn-primary">Ok</button>
+    </DialogActions>
+</BlazorDaisyUI.Dialog.Dialog>
+
+@code {
+
+    [CascadingParameter] public BlazorDaisyUI.Dialog.Dialog? Dialog { get; set; }
+
+}

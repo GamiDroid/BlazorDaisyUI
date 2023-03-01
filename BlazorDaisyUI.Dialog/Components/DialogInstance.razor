@@ -1,0 +1,27 @@
+﻿@namespace BlazorDaisyUI.Dialog
+@inherits ComponentBase
+
+<div id="@_elementId" class="modal modal-open flex-wrap p-2.5 @Position">
+    <div @attributes="UserAttributes" id="_@Id.ToString("N")" class="@Classname" role="dialog" style="@Style">
+        @if (!NoHeader)
+        {
+            <div class="w-full p-3 @HeaderBackgroundColor">
+                @if (CloseButton)
+                {
+                    <label class="btn btn-sm btn-circle absolute right-2 top-2" aria-label="close" @onclick="Cancel">@CloseIcon</label>
+                }
+                @if (TitleContent == null)
+                {
+                    <h3 class="text-lg font-bold @HeaderColorContent">@Title</h3>
+                }
+                else
+                {
+                    @TitleContent
+                }
+            </div>
+        }
+        <CascadingValue Value="this" IsFixed="true">
+            @Content
+        </CascadingValue>
+    </div>
+</div>
