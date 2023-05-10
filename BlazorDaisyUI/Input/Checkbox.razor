@@ -1,25 +1,71 @@
 ﻿@namespace BlazorDaisyUI
+@implements IAsyncDisposable
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
 
-<input type="checkbox" class="checkbox" disabled="@Disabled" checked="@Value" @onchange="HandleCheckboxChanged" />
+<input @ref=_element type="checkbox" class="@_class" disabled="@Disabled" checked="@Value" @onchange="HandleCheckboxChanged" />
 
 @code {
+
+    private string _class => new CssBuilder()
+            .AddClass(DefaultClass)
+            .AddClass(Class)
+            .Build();
+
+    private IJSObjectReference? _module;
+    private ElementReference _element;
+
+    [Parameter] public string? DefaultClass { get; set; } = "checkbox";
+    [Parameter] public string? Class { get; set; }
 
     /// <summary>
     /// The value
     /// </summary>
-    [Parameter] public bool Value { get; set; }
+    [Parameter] public bool? Value { get; set; }
 
     /// <summary>
     /// Event is triggered when the value of the checkbox changed.
     /// </summary>
-    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
+    [Parameter] public EventCallback<bool?> ValueChanged { get; set; }
 
     [Parameter] public bool Disabled { get; set; }
 
+    [Parameter] public bool Indeterminate { get; set; } = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _module = await JS.InvokeAsync<IJSObjectReference>(
+                "import", "./_content/BlazorDaisyUI/js/checkbox.js");
+
+            if (Indeterminate && Value == null)
+                await SetIndeterminateAsync();
+        }
+    }
+
     private async Task HandleCheckboxChanged(ChangeEventArgs args)
     {
-        bool v = ((bool?)args?.Value) ?? false;
-        await ValueChanged.InvokeAsync(v);
+        Value = (bool?)args?.Value;
+        await ValueChanged.InvokeAsync(Value);
     }
+
+    private ValueTask SetIndeterminateAsync()
+    {
+        if (_module is not null)
+            return _module.InvokeVoidAsync("setIndeterminate", _element);
+        return ValueTask.CompletedTask;
+    }
+
+    public ValueTask ResetAsync() => SetIndeterminateAsync();
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_module is not null)
+        {
+            await _module.DisposeAsync();
+        }
+    }
+
 
 }

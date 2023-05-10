@@ -1,0 +1,15 @@
+﻿@page "/checkboxes"
+
+<h1 class="font-mono text-2xl font-semibold pb-3">Checkboxes</h1>
+
+<div class="flex flex-wrap gap-3 items-center bg-base-200 p-3">
+    <Checkbox Value=_normalBool ValueChanged="b => _normalBool = b!.Value" />
+    <Checkbox @bind-Value=_nullableBool />
+</div>
+
+@code {
+    
+    private bool _normalBool;
+    private bool? _nullableBool;
+
+}

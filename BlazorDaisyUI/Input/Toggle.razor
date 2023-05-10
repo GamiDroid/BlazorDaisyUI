@@ -1,0 +1,24 @@
+﻿@namespace BlazorDaisyUI
+
+<input type="checkbox" class="_class" checked @oninput="e => HandleOnInput((bool?)e.Value)" />
+
+@code {
+
+    private string _class => new CssBuilder()
+        .AddClass(DefaultClass)
+        .AddClass(Class)
+        .Build();
+
+    [Parameter] public string? DefaultClass { get; set; } = "toggle";
+    [Parameter] public string? Class { get; set; } = "toggle";
+
+    [Parameter] public bool? Value { get; set; }
+    [Parameter] public EventCallback<bool?> ValueChanged { get; set; }
+
+    [Parameter] public bool Indeterminate { get; set; }
+
+    private void HandleOnInput(bool? value)
+    {
+        
+    }
+}

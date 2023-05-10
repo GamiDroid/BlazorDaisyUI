@@ -23,7 +23,7 @@
                 <li class="@(Disabled ? "disabled" : "")">
                     <label class="label cursor-pointer">
                         <span class="label-text">@ToStringFunc(option)</span>
-                        <Checkbox Value="_options[option]" ValueChanged="(b) => UpdateOption(option, b)" Disabled="Disabled" />
+                        <Checkbox Value="_options[option]" ValueChanged="(b) => UpdateOption(option, b!.Value)" Disabled="Disabled" />
                     </label>
                 </li>
             }
