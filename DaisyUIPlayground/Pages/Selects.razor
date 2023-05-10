@@ -1,0 +1,15 @@
+﻿@page "/selects"
+
+<h1 class="font-mono text-2xl font-semibold pb-3">Selects</h1>
+
+<div class="flex flex-wrap gap-3 items-center bg-base-200 p-3">
+    <Select Options="_names" Placeholder="Select a name" @bind-Selected="@_selectedName" Class="w-full max-w-xs" />
+    <p>Selected: @_selectedName</p>
+</div>
+
+@code {
+
+    private List<string> _names = new() { "Sue Storm", "Peter Parker", "Clark Kent", "Bruce Wayne" };
+    private string? _selectedName = "Peter Parker";
+
+}

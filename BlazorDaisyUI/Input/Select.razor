@@ -1,28 +1,39 @@
 ﻿@namespace BlazorDaisyUI
 @typeparam T
 
-<select class="select select-bordered" @bind="@Value" @onclick="() => Console.WriteLine(Value)">
+<select class="@_class" @onchange="HandleValueChanged">
     @if (Options is not null)
     {
+        <option selected="@(Selected is null)" disabled>@Placeholder</option>
         @foreach (var option in Options)
         {
-            <option value="@option">@option</option>
+            <option selected="@(Selected is not null && Selected.Equals(option))" value="@option">@ToStrFunc(option)</option>
         }
     }
 </select>
 
 @code {
 
-    [Parameter] public HashSet<T>? Options { get; set; }
+    private string _class => new CssBuilder()
+            .AddClass(DefaultClass)
+            .AddClass(Class)
+            .Build();
 
-    [Parameter] public T? Value { get; set; }
+    [Parameter] public string? DefaultClass { get; set; } = "select";
+    [Parameter] public string? Class { get; set; }
 
-    private Task HandleValueChanged(ChangeEventArgs args)
+    [Parameter, EditorRequired] public IEnumerable<T>? Options { get; set; }
+
+    [Parameter] public T? Selected { get; set; }
+    [Parameter] public EventCallback<T?> SelectedChanged { get; set; }
+
+    [Parameter] public string? Placeholder { get; set; }
+
+    [Parameter] public Func<T?, string?> ToStrFunc { get; set; } = x => x?.ToString();
+
+    private async Task HandleValueChanged(ChangeEventArgs args)
     {
-        Console.WriteLine($"selected value: '{args.Value}'");
-
-
-
-        return Task.CompletedTask;
+        Selected = (T?)args.Value;
+        await SelectedChanged.InvokeAsync(Selected);
     }
 }
