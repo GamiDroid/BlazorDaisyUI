@@ -1,0 +1,19 @@
+{
+  "name": "daisyuiplayground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "buildcss:Debug": "npx tailwindcss -i ./wwwroot/css/tailwind.input.css -o ./wwwroot/css/tailwind.css",
+    "buildcss:Release": "npx tailwindcss -i ./wwwroot/css/tailwind.input.css -o ./wwwroot/css/tailwind.css --minify",
+    "buildcss:Watch": "npx tailwindcss -i ./wwwroot/css/tailwind.input.css -o ./wwwroot/css/tailwind.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "daisyui": "^2.51.6"
+  }
+}

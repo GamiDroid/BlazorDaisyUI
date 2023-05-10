@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /BlazorDaisyUI/wwwroot/styles.css
 /BlazorDaisyUI/package-lock.json
+/BlazorDaisyUI.Dialog/wwwroot/styles.css

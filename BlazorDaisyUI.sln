@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Server", "Demo\Server\Demo.Server.csproj", "{79FE363D-9BF9-4215-980A-70FFA688BFE4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Client", "Demo\Client\Demo.Client.csproj", "{641D451C-9AAD-4972-A834-5C14D1A6A10A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Shared", "Demo\Shared\Demo.Shared.csproj", "{9FDFDCAE-6EE4-434E-AC8E-76A8B5B22643}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDaisyUI", "BlazorDaisyUI\BlazorDaisyUI.csproj", "{94081F66-529D-4213-9390-DCCDA12DBEC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDaisyUI.Dialog", "BlazorDaisyUI.Dialog\BlazorDaisyUI.Dialog.csproj", "{A4168D4B-46D5-4FBF-AD9F-F5684751F105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDaisyUI.Dialog", "BlazorDaisyUI.Dialog\BlazorDaisyUI.Dialog.csproj", "{A4168D4B-46D5-4FBF-AD9F-F5684751F105}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaisyUIPlayground", "DaisyUIPlayground\DaisyUIPlayground.csproj", "{ED54FA24-EA51-476A-BCC1-1C47A547497C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,18 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{79FE363D-9BF9-4215-980A-70FFA688BFE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79FE363D-9BF9-4215-980A-70FFA688BFE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79FE363D-9BF9-4215-980A-70FFA688BFE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79FE363D-9BF9-4215-980A-70FFA688BFE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{641D451C-9AAD-4972-A834-5C14D1A6A10A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{641D451C-9AAD-4972-A834-5C14D1A6A10A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{641D451C-9AAD-4972-A834-5C14D1A6A10A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{641D451C-9AAD-4972-A834-5C14D1A6A10A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FDFDCAE-6EE4-434E-AC8E-76A8B5B22643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FDFDCAE-6EE4-434E-AC8E-76A8B5B22643}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FDFDCAE-6EE4-434E-AC8E-76A8B5B22643}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FDFDCAE-6EE4-434E-AC8E-76A8B5B22643}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94081F66-529D-4213-9390-DCCDA12DBEC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94081F66-529D-4213-9390-DCCDA12DBEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94081F66-529D-4213-9390-DCCDA12DBEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +23,10 @@ Global
 		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4168D4B-46D5-4FBF-AD9F-F5684751F105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED54FA24-EA51-476A-BCC1-1C47A547497C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED54FA24-EA51-476A-BCC1-1C47A547497C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED54FA24-EA51-476A-BCC1-1C47A547497C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED54FA24-EA51-476A-BCC1-1C47A547497C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
